@@ -1,5 +1,5 @@
 //
-//  Config.swift
+//  GameConfig.swift
 //  Snake3D
 //
 //  Created by Nemo on 2020/1/22.
@@ -15,9 +15,9 @@ struct GameConfig {
     static var gameY: Int = 5
     static var gameZ: Int = 8
     
-    static var segXSize: CGFloat = 0.05
-    static var segYSize: CGFloat = 0.05
-    static var segZSize: CGFloat = 0.05
+    static var segXSize: Float = 0.05
+    static var segYSize: Float = 0.05
+    static var segZSize: Float = 0.05
     
-    static var gapSize: CGFloat = 0.01
+    static var gapSize: Float = 0.01
 }

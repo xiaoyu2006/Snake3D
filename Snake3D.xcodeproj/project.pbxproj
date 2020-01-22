@@ -15,8 +15,8 @@
 		BA96E41E23D80B50005FFF1E /* MainViewControllerARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96E41D23D80B50005FFF1E /* MainViewControllerARSessionDelegate.swift */; };
 		BA96E42023D80BCD005FFF1E /* MainViewControllerARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96E41F23D80BCD005FFF1E /* MainViewControllerARSCNViewDelegate.swift */; };
 		BAAD4CD323D885B7001CD449 /* HeadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD223D885B7001CD449 /* HeadNode.swift */; };
-		BAAD4CD523D88759001CD449 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD423D88759001CD449 /* Config.swift */; };
-		BAAD4CD723D88EEE001CD449 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD623D88EEE001CD449 /* Helper.swift */; };
+		BAAD4CD523D88759001CD449 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD423D88759001CD449 /* GameConfig.swift */; };
+		BAAD4CD723D88EEE001CD449 /* Extension+SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD623D88EEE001CD449 /* Extension+SCNVector3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +31,8 @@
 		BA96E41F23D80BCD005FFF1E /* MainViewControllerARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerARSCNViewDelegate.swift; sourceTree = "<group>"; };
 		BA96E42123D80C34005FFF1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAAD4CD223D885B7001CD449 /* HeadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadNode.swift; sourceTree = "<group>"; };
-		BAAD4CD423D88759001CD449 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		BAAD4CD623D88EEE001CD449 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		BAAD4CD423D88759001CD449 /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
+		BAAD4CD623D88EEE001CD449 /* Extension+SCNVector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+SCNVector3.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +78,8 @@
 			children = (
 				BA59DE2823D53193000E56EF /* AppDelegate.swift */,
 				BA1A331C23D5A54700C731F7 /* Snake3D.swift */,
-				BAAD4CD623D88EEE001CD449 /* Helper.swift */,
-				BAAD4CD423D88759001CD449 /* Config.swift */,
+				BAAD4CD623D88EEE001CD449 /* Extension+SCNVector3.swift */,
+				BAAD4CD423D88759001CD449 /* GameConfig.swift */,
 				BA0F11DD23D7D41200B9DFCE /* MainController */,
 				BA96E42123D80C34005FFF1E /* Assets.xcassets */,
 				BA59DE2E23D53193000E56EF /* Main.storyboard */,
@@ -170,11 +170,11 @@
 				BA96E42023D80BCD005FFF1E /* MainViewControllerARSCNViewDelegate.swift in Sources */,
 				BAAD4CD323D885B7001CD449 /* HeadNode.swift in Sources */,
 				BA59DE2D23D53193000E56EF /* MainViewController.swift in Sources */,
-				BAAD4CD523D88759001CD449 /* Config.swift in Sources */,
+				BAAD4CD523D88759001CD449 /* GameConfig.swift in Sources */,
 				BA59DE2923D53193000E56EF /* AppDelegate.swift in Sources */,
 				BA96E41E23D80B50005FFF1E /* MainViewControllerARSessionDelegate.swift in Sources */,
 				BA1A331D23D5A54700C731F7 /* Snake3D.swift in Sources */,
-				BAAD4CD723D88EEE001CD449 /* Helper.swift in Sources */,
+				BAAD4CD723D88EEE001CD449 /* Extension+SCNVector3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

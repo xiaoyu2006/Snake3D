@@ -26,36 +26,33 @@ class SegNode: SCNNode {
         
         let gap = GameConfig.gapSize
 
-        var pos = position.toSCNVector3() * SCNVector3(GameConfig.segXSize, GameConfig.segYSize, GameConfig.segZSize) + position.toSCNVector3() * Float(gap)
+        var pos = position.toSCNVector3() * SCNVector3(GameConfig.segXSize, GameConfig.segYSize, GameConfig.segZSize) + position.toSCNVector3() * gap
 
         switch heading {
         case .up:
             height += gap
-            pos.y += gap/2
-            break
+            pos.y += gap / 2
         case .down:
             height += gap
-            pos.y -= gap/2
-            break
+            pos.y -= gap / 2
         case .left:
             width += gap
-            pos.x += gap/2
-            break
+            pos.x += gap / 2
         case .right:
             width += gap
-            pos.x -= gap/2
-            break
+            pos.x -= gap / 2
         case .forward:
             length += gap
-            pos.z += gap/2
-            break
+            pos.z += gap / 2
         case .backward:
             length += gap
-            pos.z -= gap/2
-            break
+            pos.z -= gap / 2
         }
         
-        let segmentBox = SCNBox(width: width, height: height, length: length, chamferRadius: 0)
+        let segmentBox = SCNBox(width: CGFloat(width),
+                                height: CGFloat(height),
+                                length: CGFloat(length),
+                                chamferRadius: 0)
         segmentBox.firstMaterial?.diffuse.contents = color
         
         self.geometry = segmentBox
