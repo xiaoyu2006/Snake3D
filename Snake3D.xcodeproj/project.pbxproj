@@ -12,8 +12,7 @@
 		BA59DE2D23D53193000E56EF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA59DE2C23D53193000E56EF /* MainViewController.swift */; };
 		BA59DE3023D53193000E56EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA59DE2E23D53193000E56EF /* Main.storyboard */; };
 		BA59DE3523D53194000E56EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA59DE3323D53194000E56EF /* LaunchScreen.storyboard */; };
-		BA96E41E23D80B50005FFF1E /* MainViewControllerARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96E41D23D80B50005FFF1E /* MainViewControllerARSessionDelegate.swift */; };
-		BA96E42023D80BCD005FFF1E /* MainViewControllerARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96E41F23D80BCD005FFF1E /* MainViewControllerARSCNViewDelegate.swift */; };
+		BA96E41E23D80B50005FFF1E /* Extension+MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96E41D23D80B50005FFF1E /* Extension+MainViewController.swift */; };
 		BAAD4CD323D885B7001CD449 /* HeadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD223D885B7001CD449 /* HeadNode.swift */; };
 		BAAD4CD523D88759001CD449 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD423D88759001CD449 /* GameConfig.swift */; };
 		BAAD4CD723D88EEE001CD449 /* Extension+SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD623D88EEE001CD449 /* Extension+SCNVector3.swift */; };
@@ -27,8 +26,7 @@
 		BA59DE2F23D53193000E56EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA59DE3423D53194000E56EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA59DE3623D53194000E56EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA96E41D23D80B50005FFF1E /* MainViewControllerARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerARSessionDelegate.swift; sourceTree = "<group>"; };
-		BA96E41F23D80BCD005FFF1E /* MainViewControllerARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerARSCNViewDelegate.swift; sourceTree = "<group>"; };
+		BA96E41D23D80B50005FFF1E /* Extension+MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+MainViewController.swift"; sourceTree = "<group>"; };
 		BA96E42123D80C34005FFF1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAAD4CD223D885B7001CD449 /* HeadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadNode.swift; sourceTree = "<group>"; };
 		BAAD4CD423D88759001CD449 /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
@@ -51,8 +49,7 @@
 			children = (
 				BAAD4CD123D88589001CD449 /* Nodes */,
 				BA59DE2C23D53193000E56EF /* MainViewController.swift */,
-				BA96E41D23D80B50005FFF1E /* MainViewControllerARSessionDelegate.swift */,
-				BA96E41F23D80BCD005FFF1E /* MainViewControllerARSCNViewDelegate.swift */,
+				BA96E41D23D80B50005FFF1E /* Extension+MainViewController.swift */,
 			);
 			path = MainController;
 			sourceTree = "<group>";
@@ -167,12 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA96E42023D80BCD005FFF1E /* MainViewControllerARSCNViewDelegate.swift in Sources */,
 				BAAD4CD323D885B7001CD449 /* HeadNode.swift in Sources */,
 				BA59DE2D23D53193000E56EF /* MainViewController.swift in Sources */,
 				BAAD4CD523D88759001CD449 /* GameConfig.swift in Sources */,
 				BA59DE2923D53193000E56EF /* AppDelegate.swift in Sources */,
-				BA96E41E23D80B50005FFF1E /* MainViewControllerARSessionDelegate.swift in Sources */,
+				BA96E41E23D80B50005FFF1E /* Extension+MainViewController.swift in Sources */,
 				BA1A331D23D5A54700C731F7 /* Snake3D.swift in Sources */,
 				BAAD4CD723D88EEE001CD449 /* Extension+SCNVector3.swift in Sources */,
 			);
