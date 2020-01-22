@@ -72,7 +72,7 @@ class MainViewController: UIViewController {
             self.tapEnabled = false
             self.tipLabel.removeFromSuperview()
             
-            <#start game#>
+            //TODO: - Start game
             
             sceneView.debugOptions = []
         }
