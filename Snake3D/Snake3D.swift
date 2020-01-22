@@ -11,9 +11,7 @@
 
 // https://en.wikipedia.org/wiki/Snake_(video_game_genre)
 
-
-import Foundation
-
+import SceneKit
 
 // MARK: - Vector3DInt
 struct Vector3DInt {
@@ -30,6 +28,24 @@ struct Vector3DInt {
     func toString() -> String {
         return "(\(self.x),\(self.y),\(self.z))"
     }
+    
+    func toSCNVector3() -> SCNVector3 {
+        return SCNVector3(
+            CGFloat(self.x), CGFloat(self.y), CGFloat(self.z)
+        )
+    }
+    
+    static func +(first: Vector3DInt, second: Vector3DInt) -> Vector3DInt {
+        return Vector3DInt(x: first.x + second.x, y: first.y + second.y, z: first.z + second.z)
+    }
+    
+    static func -(first: Vector3DInt, second: Vector3DInt) -> Vector3DInt {
+        return Vector3DInt(x: first.x - second.x, y: first.y - second.y, z: first.z - second.z)
+    }
+    
+    static func *(first: Vector3DInt, second: Vector3DInt) -> Vector3DInt {
+        return Vector3DInt(x: first.x * second.x, y: first.y * second.y, z: first.z * second.z)
+    }
 }
 
 // MARK: - Direction3D
@@ -42,15 +58,7 @@ enum Direction3D {
     case backward
 }
 
-// Operators
-func +(first: Vector3DInt, second: Vector3DInt) -> Vector3DInt {
-    return Vector3DInt(
-        x: first.x + second.x,
-        y: first.y + second.y,
-        z: first.z + second.z
-    )
-}
-
+// Operator+
 func +(first: Vector3DInt, second: Direction3D) -> Vector3DInt {
     switch second {
     case .up:
