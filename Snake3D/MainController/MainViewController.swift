@@ -72,8 +72,7 @@ class MainViewController: UIViewController {
             self.tapEnabled = false
             self.tipLabel.removeFromSuperview()
             
-            let mainScn = SCNScene(named: "art.scnassets/main.scn")!
-            self.sceneView.scene.rootNode.addChildNode(mainScn.rootNode)
+            <#start game#>
             
             sceneView.debugOptions = []
         }
