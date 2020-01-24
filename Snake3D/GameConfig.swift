@@ -8,8 +8,6 @@
 
 // Game configuration. Avoid "magic numbers"
 
-import SceneKit
-
 struct GameConfig {
     static var gameX: Int = 8
     static var gameY: Int = 5
@@ -20,4 +18,6 @@ struct GameConfig {
     static var segZSize: Float = 0.05
     
     static var gapSize: Float = 0.01
+    
+    static var updateTime: Double = 0.5
 }

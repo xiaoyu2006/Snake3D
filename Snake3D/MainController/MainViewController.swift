@@ -12,16 +12,31 @@ import ARKit
 
 class MainViewController: UIViewController {
     // MARK: - Properties
-    @IBOutlet var sceneView: ARSCNView!
+    var sceneView: ARSCNView!
     
     var tipLabel: UIButton!
     
     var updateCount: Int = 0
     var tapEnabled: Bool = false
     
+    let stagex = GameConfig.gameX
+    let stagey = GameConfig.gameY
+    let stagez = GameConfig.gameZ
+    
+    let snake = Snake(stagex: GameConfig.gameX, stagey: GameConfig.gameY, stagez: GameConfig.gameZ)
+    
+    lazy var autoUpdate: Timer = {
+        return Timer(timeInterval: GameConfig.updateTime, repeats: true) {_ in
+            self.updateSnake()
+        }
+    }()
+    
     // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Replace the default view
+        self.view = sceneView
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -72,7 +87,7 @@ class MainViewController: UIViewController {
             self.tapEnabled = false
             self.tipLabel.removeFromSuperview()
             
-            //TODO: - Start game
+            self.setupGame()
             
             sceneView.debugOptions = []
         }

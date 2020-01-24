@@ -92,7 +92,7 @@ struct SnakeSeg {
 }
 
 // MARK: - Snake
-class Snake: NSObject {
+class Snake {
     private var segments: [SnakeSeg]
     
     var lenx: Int
@@ -103,6 +103,24 @@ class Snake: NSObject {
     
     var heading: Direction3D = .right
     
+    var apple: Vector3DInt!
+    
+    private func snakeAt(pos: Vector3DInt) -> Bool {
+        for s in self.segments {
+            if s.pos == pos {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func genApple() {
+        self.apple = Vector3DInt(x: Int.random(in: 0..<self.lenx), y: Int.random(in: 0..<self.leny), z: Int.random(in: 0..<self.lenz))
+        while snakeAt(pos: self.apple) {
+            self.apple = Vector3DInt(x: Int.random(in: 0..<self.lenx), y: Int.random(in: 0..<self.leny), z: Int.random(in: 0..<self.lenz))
+        }
+    }
+    
     init(stagex: Int, stagey: Int, stagez: Int) {
         self.lenx = stagex
         self.leny = stagey
@@ -112,6 +130,7 @@ class Snake: NSObject {
         ]
         self.score = 0
         heading = .right
+        self.genApple()
     }
     
     func getHead() -> SnakeSeg {
@@ -162,15 +181,19 @@ class Snake: NSObject {
         return SnakeSeg(dir: heading, pos: next)
     }
     
-    func update(gotApple: Bool = false) -> (append: SnakeSeg, deleted: SnakeSeg?)? {
+    func update() -> (append: SnakeSeg, deleted: SnakeSeg?)? {
         guard let next = self.step() else {
             return nil
         }
         let append: SnakeSeg = next
         var deleted: SnakeSeg?
+        let gotApple = (append.pos == self.apple)
         if !gotApple {
             deleted = self.segments.last
             self.segments.removeLast()
+        } else {
+            self.score += 1
+            self.genApple()
         }
         self.segments.insert(append, at: 0)
         return (
@@ -181,5 +204,9 @@ class Snake: NSObject {
     
     func getSnake() -> [SnakeSeg] {
         return self.segments
+    }
+    
+    func getScore() -> Int {
+        return self.score
     }
 }

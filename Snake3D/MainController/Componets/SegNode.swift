@@ -17,7 +17,7 @@ import UIKit
 import SceneKit
 
 class SegNode: SCNNode {
-    init(position: Vector3DInt, heading: Direction3D, color: UIColor) {
+    init(position: Vector3DInt, heading: Direction3D?, color: UIColor, segName: String?) {
         super.init()
         
         var width = GameConfig.segXSize
@@ -47,6 +47,8 @@ class SegNode: SCNNode {
         case .backward:
             length += gap
             pos.z += gap / 2
+        case .none:
+            break
         }
         
         let segmentBox = SCNBox(width: CGFloat(width), height: CGFloat(height), length: CGFloat(length), chamferRadius: 0.0)
@@ -54,6 +56,8 @@ class SegNode: SCNNode {
         
         self.geometry = segmentBox
         self.position = pos
+        
+        self.name = segName ?? "SnakeSeg" + position.toString()
     }
     
     required init?(coder: NSCoder) {

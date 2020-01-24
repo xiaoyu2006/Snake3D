@@ -77,3 +77,29 @@ extension MainViewController: ARSCNViewDelegate {
         plane.height = CGFloat(planeAnchor.extent.z)
     }
 }
+
+extension MainViewController {
+    func setupGame() {
+        DispatchQueue.main.async {
+            RunLoop.main.add(self.autoUpdate, forMode: RunLoop.Mode.common)
+        }
+        for x in 0..<self.stagex {
+            for y in 0..<self.stagey {
+                for z in 0..<self.stagez {
+                    let newNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.yellow.withAlphaComponent(0.8), segName: "gridCube")
+                    self.sceneView.scene.rootNode.addChildNode(newNode)
+                }
+            }
+        }
+    }
+    
+    func updateSnake() {
+        // TODO: UPDATE THE GAME
+    }
+    
+    func gameOver() {
+        // TODO: GAME OVER
+        
+        self.autoUpdate.invalidate()
+    }
+}

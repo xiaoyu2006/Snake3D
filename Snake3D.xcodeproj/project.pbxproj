@@ -13,7 +13,7 @@
 		BA59DE3023D53193000E56EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA59DE2E23D53193000E56EF /* Main.storyboard */; };
 		BA59DE3523D53194000E56EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA59DE3323D53194000E56EF /* LaunchScreen.storyboard */; };
 		BA96E41E23D80B50005FFF1E /* Extension+MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96E41D23D80B50005FFF1E /* Extension+MainViewController.swift */; };
-		BAAD4CD323D885B7001CD449 /* HeadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD223D885B7001CD449 /* HeadNode.swift */; };
+		BAAD4CD323D885B7001CD449 /* SegNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD223D885B7001CD449 /* SegNode.swift */; };
 		BAAD4CD523D88759001CD449 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD423D88759001CD449 /* GameConfig.swift */; };
 		BAAD4CD723D88EEE001CD449 /* Extension+SCNVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4CD623D88EEE001CD449 /* Extension+SCNVector3.swift */; };
 /* End PBXBuildFile section */
@@ -28,7 +28,7 @@
 		BA59DE3623D53194000E56EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA96E41D23D80B50005FFF1E /* Extension+MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+MainViewController.swift"; sourceTree = "<group>"; };
 		BA96E42123D80C34005FFF1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BAAD4CD223D885B7001CD449 /* HeadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadNode.swift; sourceTree = "<group>"; };
+		BAAD4CD223D885B7001CD449 /* SegNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegNode.swift; sourceTree = "<group>"; };
 		BAAD4CD423D88759001CD449 /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		BAAD4CD623D88EEE001CD449 /* Extension+SCNVector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+SCNVector3.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,7 +47,7 @@
 		BA0F11DD23D7D41200B9DFCE /* MainController */ = {
 			isa = PBXGroup;
 			children = (
-				BAAD4CD123D88589001CD449 /* Nodes */,
+				BAAD4CD123D88589001CD449 /* Componets */,
 				BA59DE2C23D53193000E56EF /* MainViewController.swift */,
 				BA96E41D23D80B50005FFF1E /* Extension+MainViewController.swift */,
 			);
@@ -86,12 +86,12 @@
 			path = Snake3D;
 			sourceTree = "<group>";
 		};
-		BAAD4CD123D88589001CD449 /* Nodes */ = {
+		BAAD4CD123D88589001CD449 /* Componets */ = {
 			isa = PBXGroup;
 			children = (
-				BAAD4CD223D885B7001CD449 /* HeadNode.swift */,
+				BAAD4CD223D885B7001CD449 /* SegNode.swift */,
 			);
-			path = Nodes;
+			path = Componets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAAD4CD323D885B7001CD449 /* HeadNode.swift in Sources */,
+				BAAD4CD323D885B7001CD449 /* SegNode.swift in Sources */,
 				BA59DE2D23D53193000E56EF /* MainViewController.swift in Sources */,
 				BAAD4CD523D88759001CD449 /* GameConfig.swift in Sources */,
 				BA59DE2923D53193000E56EF /* AppDelegate.swift in Sources */,
