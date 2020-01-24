@@ -35,8 +35,12 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sceneView = ARSCNView(frame: self.view.frame)
+        
+        
         // Replace the default view
         self.view = sceneView
+        
         
         // Set the view's delegate
         sceneView.delegate = self
