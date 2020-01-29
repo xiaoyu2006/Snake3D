@@ -15,6 +15,7 @@
 
 import UIKit
 import SceneKit
+import ARKit
 
 class SegNode: SCNNode {
     init(position: Vector3DInt, heading: Direction3D?, color: UIColor, segName: String?) {
@@ -62,5 +63,11 @@ class SegNode: SCNNode {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func placeAtPlane(plane: ARPlaneAnchor) -> Void {
+        let center = plane.center
+        let size = plane.extent
+        self.position = self.position + SCNVector3(center.x - size.x / 2, center.y, center.z - size.z / 2)
     }
 }

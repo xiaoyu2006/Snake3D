@@ -13,6 +13,7 @@ import ARKit
 class MainViewController: UIViewController {
     // MARK: - Properties
     var sceneView: ARSCNView!
+    var plane: ARPlaneAnchor?
     
     var tipLabel: UIButton!
     

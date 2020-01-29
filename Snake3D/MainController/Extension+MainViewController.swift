@@ -51,6 +51,8 @@ extension MainViewController: ARSCNViewDelegate {
         if self.tapEnabled { return }
 
         if let planeAnchor = anchor as? ARPlaneAnchor, node.childNodes.count < 1, self.updateCount < 1 {
+            // Record it
+            self.plane = planeAnchor
             // Show debug plane
             let debugPlaneNode = createPlaneNode(center: planeAnchor.center, extent: planeAnchor.extent)
             debugPlaneNode.name = "debugPlaneNode"
@@ -86,7 +88,8 @@ extension MainViewController {
         for x in 0..<self.stagex {
             for y in 0..<self.stagey {
                 for z in 0..<self.stagez {
-                    let newNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.yellow.withAlphaComponent(0.8), segName: "gridCube")
+                    let newNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.yellow.withAlphaComponent(0.5), segName: "gridCube")
+                    newNode.placeAtPlane(plane: self.plane!)
                     self.sceneView.scene.rootNode.addChildNode(newNode)
                 }
             }
