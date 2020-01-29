@@ -88,7 +88,7 @@ extension MainViewController {
         for x in 0..<self.stagex {
             for y in 0..<self.stagey {
                 for z in 0..<self.stagez {
-                    let newNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.yellow.withAlphaComponent(0.5), segName: "gridCube")
+                    let newNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.yellow.withAlphaComponent(0.5), segName: "gridCube", shrink: CGFloat(GameConfig.segShrinkSize))
                     newNode.placeAtPlane(plane: self.plane!)
                     self.sceneView.scene.rootNode.addChildNode(newNode)
                 }
@@ -101,7 +101,7 @@ extension MainViewController {
             self.sceneView.scene.rootNode.addChildNode(segNode)
         }
         let apple = self.snake.getApple()
-        let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
+        let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple", shrink: CGFloat(-GameConfig.segShrinkSize))
         appleNode.placeAtPlane(plane: self.plane!)
         self.sceneView.scene.rootNode.addChildNode(appleNode)
     }
@@ -118,7 +118,7 @@ extension MainViewController {
             } else {
                 self.sceneView.scene.rootNode.childNode(withName: "Apple", recursively: true)!.removeFromParentNode()
                 let apple = self.snake.getApple()
-                let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
+                let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple", shrink: CGFloat(-GameConfig.segShrinkSize))
                 appleNode.placeAtPlane(plane: self.plane!)
                 self.sceneView.scene.rootNode.addChildNode(appleNode)
             }
@@ -128,9 +128,8 @@ extension MainViewController {
     }
     
     func gameOver() {
-        // TODO: GAME OVER
-        
         self.autoUpdate.invalidate()
+        fatalError("GAMEOVER")
     }
     
     // TODO: INTERACTIVE

@@ -18,7 +18,7 @@ import SceneKit
 import ARKit
 
 class SegNode: SCNNode {
-    init(position: Vector3DInt, heading: Direction3D?, color: UIColor, segName: String?) {
+    init(position: Vector3DInt, heading: Direction3D?, color: UIColor, segName: String?, shrink: CGFloat = 0.0) {
         super.init()
         
         var width = GameConfig.segXSize
@@ -52,7 +52,7 @@ class SegNode: SCNNode {
             break
         }
         
-        let segmentBox = SCNBox(width: CGFloat(width), height: CGFloat(height), length: CGFloat(length), chamferRadius: 0.0)
+        let segmentBox = SCNBox(width: CGFloat(width) - shrink, height: CGFloat(height) - shrink, length: CGFloat(length) - shrink, chamferRadius: 0.0)
         segmentBox.firstMaterial?.diffuse.contents = color
         
         self.geometry = segmentBox

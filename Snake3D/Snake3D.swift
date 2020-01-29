@@ -186,6 +186,7 @@ class Snake {
             return nil
         }
         let append: SnakeSeg = next
+        self.segments.insert(append, at: 0)
         var deleted: SnakeSeg?
         let gotApple = (append.pos == self.apple)
         if !gotApple {
@@ -195,7 +196,6 @@ class Snake {
             self.score += 1
             self.genApple()
         }
-        self.segments.insert(append, at: 0)
         return (
             append: append,
             delete: deleted
