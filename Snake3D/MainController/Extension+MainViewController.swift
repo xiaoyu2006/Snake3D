@@ -82,7 +82,11 @@ extension MainViewController: ARSCNViewDelegate {
 
 extension MainViewController {
     func setupGame() {
+        self.scoreLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 20))
         DispatchQueue.main.async {
+            self.view.addSubview(self.scoreLabel)
+            self.scoreLabel.textColor = UIColor.blue
+            self.scoreLabel.text = "Scores: \(self.snake.getScore())"
             RunLoop.main.add(self.autoUpdate, forMode: RunLoop.Mode.common)
         }
         for x in 0..<self.stagex {
@@ -121,6 +125,9 @@ extension MainViewController {
                 let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple", shrink: CGFloat(-GameConfig.segShrinkSize))
                 appleNode.placeAtPlane(plane: self.plane!)
                 self.sceneView.scene.rootNode.addChildNode(appleNode)
+                DispatchQueue.main.async {
+                    self.scoreLabel.text = "Scores: \(self.snake.getScore())"
+                }
             }
         } else {
             self.gameOver()
@@ -129,7 +136,14 @@ extension MainViewController {
     
     func gameOver() {
         self.autoUpdate.invalidate()
-        fatalError("GAMEOVER")
+        self.scoreLabel.removeFromSuperview()
+        self.gameOverLabel = UILabel(frame: self.view.frame)
+        self.gameOverLabel.textAlignment = .center
+        self.gameOverLabel.adjustsFontSizeToFitWidth = true
+        
+        self.gameOverLabel.text = "You failed! Your final score is \(self.snake.getScore() - 1)"
+        self.gameOverLabel.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.view.addSubview(self.gameOverLabel)
     }
     
     // TODO: INTERACTIVE

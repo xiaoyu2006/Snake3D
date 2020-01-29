@@ -115,6 +115,9 @@ class Snake {
     }
     
     private func genApple() {
+        if self.segments.count == self.lenx * self.leny * self.lenz {
+            return
+        }
         self.apple = Vector3DInt(x: Int.random(in: 0..<self.lenx), y: Int.random(in: 0..<self.leny), z: Int.random(in: 0..<self.lenz))
         while snakeAt(pos: self.apple) {
             self.apple = Vector3DInt(x: Int.random(in: 0..<self.lenx), y: Int.random(in: 0..<self.leny), z: Int.random(in: 0..<self.lenz))

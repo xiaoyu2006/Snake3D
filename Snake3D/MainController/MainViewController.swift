@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
     var plane: ARPlaneAnchor?
     
     var tipLabel: UIButton!
+    var scoreLabel: UILabel!
+    var gameOverLabel: UILabel!
     
     var updateCount: Int = 0
     var tapEnabled: Bool = false
