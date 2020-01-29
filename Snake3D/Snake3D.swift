@@ -181,7 +181,7 @@ class Snake {
         return SnakeSeg(dir: heading, pos: next)
     }
     
-    func update() -> (append: SnakeSeg, deleted: SnakeSeg?)? {
+    func update() -> (append: SnakeSeg, delete: SnakeSeg?)? {
         guard let next = self.step() else {
             return nil
         }
@@ -198,7 +198,7 @@ class Snake {
         self.segments.insert(append, at: 0)
         return (
             append: append,
-            deleted: deleted
+            delete: deleted
         )
     }
     
@@ -208,5 +208,9 @@ class Snake {
     
     func getScore() -> Int {
         return self.score
+    }
+    
+    func getApple() -> Vector3DInt {
+        return self.apple
     }
 }

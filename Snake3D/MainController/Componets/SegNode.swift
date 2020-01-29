@@ -58,7 +58,7 @@ class SegNode: SCNNode {
         self.geometry = segmentBox
         self.position = pos
         
-        self.name = segName ?? "SnakeSeg" + position.toString()
+        self.name = (segName ?? "SnakeSeg" + position.toString())
     }
     
     required init?(coder: NSCoder) {

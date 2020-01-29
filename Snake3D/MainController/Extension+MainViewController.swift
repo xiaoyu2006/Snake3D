@@ -94,10 +94,37 @@ extension MainViewController {
                 }
             }
         }
+        let segments = self.snake.getSnake()
+        for seg in segments {
+            let segNode = SegNode(position: seg.pos, heading: seg.dir, color: UIColor.yellow, segName: nil)
+            segNode.placeAtPlane(plane: self.plane!)
+            self.sceneView.scene.rootNode.addChildNode(segNode)
+        }
+        let apple = self.snake.getApple()
+        let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
+        appleNode.placeAtPlane(plane: self.plane!)
+        self.sceneView.scene.rootNode.addChildNode(appleNode)
     }
     
     func updateSnake() {
-        // TODO: UPDATE THE GAME
+        let updateInfo = self.snake.update()
+        if let updated = updateInfo {
+            let appended = updated.append
+            let newSnakeNode = SegNode(position: appended.pos, heading: appended.dir, color: UIColor.yellow, segName: nil)
+            newSnakeNode.placeAtPlane(plane: self.plane!)
+            self.sceneView.scene.rootNode.addChildNode(newSnakeNode)
+            if let deleted = updated.delete {
+                self.sceneView.scene.rootNode.childNode(withName: "SnakeSeg" + deleted.pos.toString(), recursively: true)!.removeFromParentNode()
+            } else {
+                self.sceneView.scene.rootNode.childNode(withName: "Apple", recursively: true)!.removeFromParentNode()
+                let apple = self.snake.getApple()
+                let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
+                appleNode.placeAtPlane(plane: self.plane!)
+                self.sceneView.scene.rootNode.addChildNode(appleNode)
+            }
+        } else {
+            self.gameOver()
+        }
     }
     
     func gameOver() {
@@ -106,5 +133,5 @@ extension MainViewController {
         self.autoUpdate.invalidate()
     }
     
-    // TODO: Interactive
+    // TODO: INTERACTIVE
 }
