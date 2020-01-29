@@ -105,4 +105,6 @@ extension MainViewController {
         
         self.autoUpdate.invalidate()
     }
+    
+    // TODO: Interactive
 }
