@@ -82,6 +82,7 @@ extension MainViewController: ARSCNViewDelegate {
 
 extension MainViewController {
     func setupGame() {
+        self.musicPlayer.playBGM()
         self.scoreLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 20))
         DispatchQueue.main.async {
             self.view.addSubview(self.scoreLabel)
@@ -120,6 +121,7 @@ extension MainViewController {
             if let deleted = updated.delete {
                 self.sceneView.scene.rootNode.childNode(withName: "SnakeSeg" + deleted.pos.toString(), recursively: true)!.removeFromParentNode()
             } else {
+                // Got one apple
                 self.sceneView.scene.rootNode.childNode(withName: "Apple", recursively: true)!.removeFromParentNode()
                 let apple = self.snake.getApple()
                 let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple", shrink: CGFloat(-GameConfig.segShrinkSize))
@@ -128,6 +130,7 @@ extension MainViewController {
                 DispatchQueue.main.async {
                     self.scoreLabel.text = "Scores: \(self.snake.getScore())"
                 }
+                self.musicPlayer.playOneUp()
             }
         } else {
             self.gameOver()
@@ -144,6 +147,8 @@ extension MainViewController {
         self.gameOverLabel.text = "You failed! Your final score is \(self.snake.getScore() - 1)"
         self.gameOverLabel.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         self.view.addSubview(self.gameOverLabel)
+        
+        self.musicPlayer.gameOver()
     }
     
     // TODO: INTERACTIVE

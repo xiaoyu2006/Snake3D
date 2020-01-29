@@ -28,6 +28,8 @@ class MainViewController: UIViewController {
     
     let snake = Snake(stagex: GameConfig.gameX, stagey: GameConfig.gameY, stagez: GameConfig.gameZ)
     
+    let musicPlayer = SoundPlayer()
+    
     lazy var autoUpdate: Timer = {
         return Timer(timeInterval: GameConfig.updateTime, repeats: true) {_ in
             self.updateSnake()
