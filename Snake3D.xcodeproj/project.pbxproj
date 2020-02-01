@@ -14,7 +14,6 @@
 		BA59DE3523D53194000E56EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA59DE3323D53194000E56EF /* LaunchScreen.storyboard */; };
 		BA7EC80A23E2DF39002FE11F /* arrow.obj in Resources */ = {isa = PBXBuildFile; fileRef = BA7EC80923E2DF39002FE11F /* arrow.obj */; };
 		BA89B28223E1CFE9008B0D95 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89B28123E1CFE9008B0D95 /* SoundPlayer.swift */; };
-		BA89B28423E1D07C008B0D95 /* Super Mario Bros.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA89B28323E1D07C008B0D95 /* Super Mario Bros.mp3 */; };
 		BA89B28623E1D101008B0D95 /* 1-Up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA89B28523E1D101008B0D95 /* 1-Up.mp3 */; };
 		BA89B28923E1D2DF008B0D95 /* Game Over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA89B28823E1D2DF008B0D95 /* Game Over.mp3 */; };
 		BA96FB3923DB5CD5009EFA6F /* Extension+MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96E41D23D80B50005FFF1E /* Extension+MainViewController.swift */; };
@@ -33,7 +32,6 @@
 		BA59DE3623D53194000E56EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA7EC80923E2DF39002FE11F /* arrow.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arrow.obj; sourceTree = "<group>"; };
 		BA89B28123E1CFE9008B0D95 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
-		BA89B28323E1D07C008B0D95 /* Super Mario Bros.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Super Mario Bros.mp3"; sourceTree = "<group>"; };
 		BA89B28523E1D101008B0D95 /* 1-Up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "1-Up.mp3"; sourceTree = "<group>"; };
 		BA89B28823E1D2DF008B0D95 /* Game Over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Game Over.mp3"; sourceTree = "<group>"; };
 		BA96E41D23D80B50005FFF1E /* Extension+MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Extension+MainViewController.swift"; path = "Snake3D/MainController/Extension+MainViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -101,7 +99,6 @@
 		BA89B28723E1D10B008B0D95 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				BA89B28323E1D07C008B0D95 /* Super Mario Bros.mp3 */,
 				BA89B28523E1D101008B0D95 /* 1-Up.mp3 */,
 				BA89B28823E1D2DF008B0D95 /* Game Over.mp3 */,
 			);
@@ -175,7 +172,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA89B28423E1D07C008B0D95 /* Super Mario Bros.mp3 in Resources */,
 				BA7EC80A23E2DF39002FE11F /* arrow.obj in Resources */,
 				BA89B28923E1D2DF008B0D95 /* Game Over.mp3 in Resources */,
 				BA89B28623E1D101008B0D95 /* 1-Up.mp3 in Resources */,

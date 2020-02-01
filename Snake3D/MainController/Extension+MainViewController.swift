@@ -33,9 +33,79 @@ extension MainViewController: ARSessionDelegate {
 // MARK: - Important part
 
 extension MainViewController {
+    func setupInteractive() {
+        let STEP: CGFloat = 100
+        
+        let btnUP = UIButton(frame: getFrame4ControlBtn(STEP*2, STEP*4))
+        btnUP.setTitle("UP", for: .normal)
+        btnUP.addTarget(self, action: #selector(self.UP), for: .touchUpInside)
+        self.view.addSubview(btnUP)
+        
+        let btnDOWN = UIButton(frame: getFrame4ControlBtn(STEP*2, STEP))
+        btnDOWN.setTitle("DOWN", for: .normal)
+        btnDOWN.addTarget(self, action: #selector(self.DOWN), for: .touchUpInside)
+        self.view.addSubview(btnDOWN)
+        
+        let btnLEFT = UIButton(frame: getFrame4ControlBtn(STEP*3, STEP*3))
+        btnLEFT.setTitle("LEFT", for: .normal)
+        btnLEFT.addTarget(self, action: #selector(self.LEFT), for: .touchUpInside)
+        self.view.addSubview(btnLEFT)
+        
+        let btnRIGHT = UIButton(frame: getFrame4ControlBtn(STEP, STEP*2))
+        btnRIGHT.setTitle("RIGHT", for: .normal)
+        btnRIGHT.addTarget(self, action: #selector(self.RIGHT), for: .touchUpInside)
+        self.view.addSubview(btnRIGHT)
+        
+        let btnFRONT = UIButton(frame: getFrame4ControlBtn(STEP, STEP*3))
+        btnFRONT.setTitle("FORWARD", for: .normal)
+        btnFRONT.addTarget(self, action: #selector(self.FORWARD), for: .touchUpInside)
+        self.view.addSubview(btnFRONT)
+        
+        let btnBACK = UIButton(frame: getFrame4ControlBtn(STEP*3, STEP*2))
+        btnBACK.setTitle("BACKWARD", for: .normal)
+        btnBACK.addTarget(self, action: #selector(self.BACKWARD), for: .touchUpInside)
+        self.view.addSubview(btnBACK)
+    }
+    
+    func getFrame4ControlBtn(_ negX: CGFloat, _ negY: CGFloat) -> CGRect {
+        let superFrame = self.view.frame
+        let result = CGRect(x: superFrame.maxX - negX, y: superFrame.maxY - negY, width: 100.0, height: 20.0)
+        return result
+    }
+    
+    @objc func UP() {
+        snake.setHeading(heading: .down)
+    }
+    
+    @objc func DOWN() {
+        snake.setHeading(heading: .up)
+    }
+    
+    @objc func LEFT() {
+        snake.setHeading(heading: .left)
+    }
+    
+    @objc func RIGHT() {
+        snake.setHeading(heading: .right)
+    }
+    
+    @objc func FORWARD() {
+        snake.setHeading(heading: .backward)
+    }
+    
+    @objc func BACKWARD() {
+        snake.setHeading(heading: .forward)
+    }
+}
+
+
+extension MainViewController {
     func setupGame() {
-        self.musicPlayer.playBGM()
-        self.scoreLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 20))
+        DispatchQueue.main.async {
+            self.setupInteractive()
+        }
+        
+        self.scoreLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 40))
         DispatchQueue.main.async {
             self.view.addSubview(self.scoreLabel)
             self.scoreLabel.textColor = UIColor.blue
