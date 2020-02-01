@@ -30,55 +30,7 @@ extension MainViewController: ARSessionDelegate {
     }
 }
 
-// MARK: - ARSCNViewDelegate
-extension MainViewController: ARSCNViewDelegate {
-    func createPlaneNode(center: vector_float3, extent: vector_float3) -> SCNNode {
-        let plane = SCNPlane(width: CGFloat(extent.x), height: CGFloat(extent.z))
-        
-        let planeMaterial = SCNMaterial()
-        planeMaterial.diffuse.contents = UIColor.yellow.withAlphaComponent(0.4)
-        plane.materials = [planeMaterial]
-        
-        let planeNode = SCNNode(geometry: plane)
-        planeNode.position = SCNVector3Make(center.x, 0, center.z)
-        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
-        
-        return planeNode
-    }
-    
-    
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if self.tapEnabled { return }
-
-        if let planeAnchor = anchor as? ARPlaneAnchor, node.childNodes.count < 1, self.updateCount < 1 {
-            // Record it
-            self.plane = planeAnchor
-            // Show debug plane
-            let debugPlaneNode = createPlaneNode(center: planeAnchor.center, extent: planeAnchor.extent)
-            debugPlaneNode.name = "debugPlaneNode"
-            
-            node.addChildNode(debugPlaneNode)
-            
-            // Change the title
-            DispatchQueue.main.async {
-                self.tipLabel.setTitle("Tap to start", for: .normal)
-            }
-            
-            self.tapEnabled = true
-        }
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, willUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard let planeAnchor = anchor as? ARPlaneAnchor, let planeNode = node.childNodes.first, let plane = planeNode.geometry as? SCNPlane else {
-            return
-        }
-        
-        updateCount += 1
-        
-        plane.width = CGFloat(planeAnchor.extent.x)
-        plane.height = CGFloat(planeAnchor.extent.z)
-    }
-}
+// MARK: - Important part
 
 extension MainViewController {
     func setupGame() {
@@ -93,8 +45,8 @@ extension MainViewController {
         for x in 0..<self.stagex {
             for y in 0..<self.stagey {
                 for z in 0..<self.stagez {
-                    let newNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.yellow.withAlphaComponent(0.5), segName: "gridCube", shrink: CGFloat(GameConfig.segShrinkSize))
-                    newNode.placeAtPlane(plane: self.plane!)
+                    let newNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.green.withAlphaComponent(0.3), segName: "gridCube", shrink: CGFloat(GameConfig.segShrinkSize))
+                    newNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
                     self.sceneView.scene.rootNode.addChildNode(newNode)
                 }
             }
@@ -102,12 +54,12 @@ extension MainViewController {
         let segments = self.snake.getSnake()
         for seg in segments {
             let segNode = SegNode(position: seg.pos, heading: seg.dir, color: UIColor.yellow, segName: nil)
-            segNode.placeAtPlane(plane: self.plane!)
+            segNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
             self.sceneView.scene.rootNode.addChildNode(segNode)
         }
         let apple = self.snake.getApple()
         let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple", shrink: CGFloat(-GameConfig.segShrinkSize))
-        appleNode.placeAtPlane(plane: self.plane!)
+        appleNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
         self.sceneView.scene.rootNode.addChildNode(appleNode)
     }
     
@@ -116,7 +68,7 @@ extension MainViewController {
         if let updated = updateInfo {
             let appended = updated.append
             let newSnakeNode = SegNode(position: appended.pos, heading: appended.dir, color: UIColor.yellow, segName: nil)
-            newSnakeNode.placeAtPlane(plane: self.plane!)
+            newSnakeNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
             self.sceneView.scene.rootNode.addChildNode(newSnakeNode)
             if let deleted = updated.delete {
                 self.sceneView.scene.rootNode.childNode(withName: "SnakeSeg" + deleted.pos.toString(), recursively: true)!.removeFromParentNode()
@@ -125,7 +77,7 @@ extension MainViewController {
                 self.sceneView.scene.rootNode.childNode(withName: "Apple", recursively: true)!.removeFromParentNode()
                 let apple = self.snake.getApple()
                 let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple", shrink: CGFloat(-GameConfig.segShrinkSize))
-                appleNode.placeAtPlane(plane: self.plane!)
+                appleNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
                 self.sceneView.scene.rootNode.addChildNode(appleNode)
                 DispatchQueue.main.async {
                     self.scoreLabel.text = "Scores: \(self.snake.getScore())"
@@ -150,6 +102,4 @@ extension MainViewController {
         
         self.musicPlayer.gameOver()
     }
-    
-    // TODO: INTERACTIVE
 }

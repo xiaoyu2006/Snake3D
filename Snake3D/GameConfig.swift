@@ -10,14 +10,14 @@
 
 struct GameConfig {
     static var gameX: Int = 8
-    static var gameY: Int = 1
-    static var gameZ: Int = 1
+    static var gameY: Int = 4
+    static var gameZ: Int = 8
     
     static var segXSize: Float = 0.05
     static var segYSize: Float = 0.05
     static var segZSize: Float = 0.05
     
-    static var segShrinkSize: Float = 0.01
+    static let segShrinkSize: Float = 0.01
     
     static var gapSize: Float = 0.01
     
