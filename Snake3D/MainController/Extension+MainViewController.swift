@@ -39,37 +39,43 @@ extension MainViewController {
         let btnUP = UIButton(frame: getFrame4ControlBtn(STEP*2, STEP*4))
         btnUP.setTitle("UP", for: .normal)
         btnUP.addTarget(self, action: #selector(self.UP), for: .touchUpInside)
+        btnUP.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
         self.view.addSubview(btnUP)
         
         let btnDOWN = UIButton(frame: getFrame4ControlBtn(STEP*2, STEP))
         btnDOWN.setTitle("DOWN", for: .normal)
         btnDOWN.addTarget(self, action: #selector(self.DOWN), for: .touchUpInside)
+        btnDOWN.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
         self.view.addSubview(btnDOWN)
         
         let btnLEFT = UIButton(frame: getFrame4ControlBtn(STEP*3, STEP*3))
         btnLEFT.setTitle("LEFT", for: .normal)
         btnLEFT.addTarget(self, action: #selector(self.LEFT), for: .touchUpInside)
+        btnLEFT.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
         self.view.addSubview(btnLEFT)
         
         let btnRIGHT = UIButton(frame: getFrame4ControlBtn(STEP, STEP*2))
         btnRIGHT.setTitle("RIGHT", for: .normal)
         btnRIGHT.addTarget(self, action: #selector(self.RIGHT), for: .touchUpInside)
+        btnRIGHT.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
         self.view.addSubview(btnRIGHT)
         
         let btnFRONT = UIButton(frame: getFrame4ControlBtn(STEP, STEP*3))
         btnFRONT.setTitle("FORWARD", for: .normal)
         btnFRONT.addTarget(self, action: #selector(self.FORWARD), for: .touchUpInside)
+        btnFRONT.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
         self.view.addSubview(btnFRONT)
         
         let btnBACK = UIButton(frame: getFrame4ControlBtn(STEP*3, STEP*2))
         btnBACK.setTitle("BACKWARD", for: .normal)
         btnBACK.addTarget(self, action: #selector(self.BACKWARD), for: .touchUpInside)
+        btnBACK.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.5)
         self.view.addSubview(btnBACK)
     }
     
     func getFrame4ControlBtn(_ negX: CGFloat, _ negY: CGFloat) -> CGRect {
         let superFrame = self.view.frame
-        let result = CGRect(x: superFrame.maxX - negX, y: superFrame.maxY - negY, width: 100.0, height: 20.0)
+        let result = CGRect(x: superFrame.maxX - negX, y: superFrame.maxY - negY, width: 100.0, height: 30.0)
         return result
     }
     
