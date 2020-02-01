@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
     let stagey = GameConfig.gameY
     let stagez = GameConfig.gameZ
     
-    let estAWidth = Float(GameConfig.gameX) * (GameConfig.segXSize + GameConfig.gapSize)
+    let estAWidth = Float(GameConfig.gameX) * GameConfig.segXSize
     
     let snake = Snake(stagex: GameConfig.gameX, stagey: GameConfig.gameY, stagez: GameConfig.gameZ)
     

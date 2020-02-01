@@ -118,15 +118,6 @@ extension MainViewController {
             self.scoreLabel.text = "Scores: \(self.snake.getScore())"
             RunLoop.main.add(self.autoUpdate, forMode: RunLoop.Mode.common)
         }
-        for x in 0..<self.stagex {
-            for y in 0..<self.stagey {
-                for z in 0..<self.stagez {
-                    let newNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.green.withAlphaComponent(0.3), segName: "gridCube", shrink: CGFloat(GameConfig.segShrinkSize))
-                    newNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
-                    self.sceneView.scene.rootNode.addChildNode(newNode)
-                }
-            }
-        }
         let segments = self.snake.getSnake()
         for seg in segments {
             let segNode = SegNode(position: seg.pos, heading: seg.dir, color: UIColor.yellow, segName: nil)
@@ -134,7 +125,7 @@ extension MainViewController {
             self.sceneView.scene.rootNode.addChildNode(segNode)
         }
         let apple = self.snake.getApple()
-        let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple", shrink: CGFloat(-GameConfig.segShrinkSize))
+        let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
         appleNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
         self.sceneView.scene.rootNode.addChildNode(appleNode)
     }
@@ -152,7 +143,7 @@ extension MainViewController {
                 // Got one apple
                 self.sceneView.scene.rootNode.childNode(withName: "Apple", recursively: true)!.removeFromParentNode()
                 let apple = self.snake.getApple()
-                let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple", shrink: CGFloat(-GameConfig.segShrinkSize))
+                let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
                 appleNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
                 self.sceneView.scene.rootNode.addChildNode(appleNode)
                 DispatchQueue.main.async {

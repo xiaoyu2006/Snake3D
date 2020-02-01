@@ -17,9 +17,5 @@ struct GameConfig {
     static var segYSize: Float = 0.05
     static var segZSize: Float = 0.05
     
-    static let segShrinkSize: Float = 0.01
-    
-    static var gapSize: Float = 0.01
-    
     static var updateTime: Double = 0.75
 }
