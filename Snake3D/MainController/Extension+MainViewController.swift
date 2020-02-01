@@ -166,7 +166,7 @@ extension MainViewController {
         self.gameOverLabel.textAlignment = .center
         self.gameOverLabel.adjustsFontSizeToFitWidth = true
         
-        self.gameOverLabel.text = "You failed! Your final score is \(self.snake.getScore() - 1)"
+        self.gameOverLabel.text = "You failed! Your final score is \(self.snake.getScore())"
         self.gameOverLabel.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         self.view.addSubview(self.gameOverLabel)
         
