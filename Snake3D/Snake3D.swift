@@ -141,6 +141,21 @@ class Snake {
     }
     
     func setHeading(heading: Direction3D) {
+        let tmp = self.heading
+        switch heading {
+        case .up:
+            if tmp == .down { return }
+        case .down:
+            if tmp == .up { return }
+        case .left:
+            if tmp == .right { return }
+        case .right:
+            if tmp == .left { return }
+        case .forward:
+            if tmp == .backward { return }
+        case .backward:
+            if tmp == .forward { return }
+        }
         self.heading = heading
     }
     

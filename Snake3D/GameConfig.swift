@@ -21,5 +21,5 @@ struct GameConfig {
     
     static var gapSize: Float = 0.01
     
-    static var updateTime: Double = 0.5
+    static var updateTime: Double = 0.75
 }
