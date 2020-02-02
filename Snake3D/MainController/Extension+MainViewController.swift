@@ -75,13 +75,13 @@ extension MainViewController {
     
     func getFrame4ControlBtn1(_ negX: CGFloat, _ negY: CGFloat) -> CGRect {
         let superFrame = self.view.frame
-        let result = CGRect(x: superFrame.maxX - negX, y: superFrame.maxY - negY, width: 100.0, height: 40.0)
+        let result = CGRect(x: superFrame.maxX - negX, y: superFrame.maxY - negY, width: 100.0, height: 50.0)
         return result
     }
     
     func getFrame4ControlBtn2(_ x: CGFloat, _ negY: CGFloat) -> CGRect {
         let superFrame = self.view.frame
-        let result = CGRect(x: x, y: superFrame.maxY - negY, width: 100.0, height: 40.0)
+        let result = CGRect(x: x, y: superFrame.maxY - negY, width: 100.0, height: 50.0)
         return result
     }
     
@@ -182,7 +182,7 @@ extension MainViewController {
         self.gameOverLabel.textAlignment = .center
         self.gameOverLabel.adjustsFontSizeToFitWidth = true
         
-        self.gameOverLabel.text = "You failed! Your final score is \(self.snake.getScore())"
+        self.gameOverLabel.text = "You failed! Your final score is \(self.snake.getScore())."
         self.gameOverLabel.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         self.view.addSubview(self.gameOverLabel)
         
