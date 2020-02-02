@@ -112,12 +112,24 @@ extension MainViewController {
         }
         
         self.scoreLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 40))
+        for x in 0..<self.stagex {
+            for y in 0..<self.stagey {
+                for z in 0..<self.stagez {
+                    let gridNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.black, segName: "gridCube")
+                    gridNode.geometry?.firstMaterial?.fillMode = .lines
+                    gridNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
+                    self.sceneView.scene.rootNode.addChildNode(gridNode)
+                }
+            }
+        }
+        
         DispatchQueue.main.async {
             self.view.addSubview(self.scoreLabel)
             self.scoreLabel.textColor = UIColor.blue
             self.scoreLabel.text = "Scores: \(self.snake.getScore())"
             RunLoop.main.add(self.autoUpdate, forMode: RunLoop.Mode.common)
         }
+        
         let segments = self.snake.getSnake()
         for seg in segments {
             let segNode = SegNode(position: seg.pos, heading: seg.dir, color: UIColor.yellow, segName: nil)

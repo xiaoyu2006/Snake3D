@@ -14,7 +14,7 @@ class SoundPlayer {
     func playOneUp() {
         let oneUpMusicURL =  Bundle.main.url(forResource: "1-Up", withExtension: "mp3")!
         try! soundEffectMusicPlayer = AVAudioPlayer (contentsOf: oneUpMusicURL)
-        soundEffectMusicPlayer.numberOfLoops = 1
+        soundEffectMusicPlayer.numberOfLoops = 0
         soundEffectMusicPlayer.prepareToPlay()
         soundEffectMusicPlayer.play()
     }
@@ -22,7 +22,7 @@ class SoundPlayer {
     func gameOver() {
         let oneUpMusicURL =  Bundle.main.url(forResource: "Game Over", withExtension: "mp3")!
         try! soundEffectMusicPlayer = AVAudioPlayer (contentsOf: oneUpMusicURL)
-        soundEffectMusicPlayer.numberOfLoops = 1
+        soundEffectMusicPlayer.numberOfLoops = 0
         soundEffectMusicPlayer.prepareToPlay()
         soundEffectMusicPlayer.play()
     }
