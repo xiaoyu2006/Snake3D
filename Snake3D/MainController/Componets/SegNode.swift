@@ -42,7 +42,7 @@ class SegNode: SCNNode {
     func placeAt(width aWidth: Float, position: SCNVector3) {
         // Fine tune
         self.position.x -= aWidth / 2
-        self.position.y += 0.02
+        self.position.y += 0.01
         self.position.z = -self.position.z
         
         // Place @ plane
