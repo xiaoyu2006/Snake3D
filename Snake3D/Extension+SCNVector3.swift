@@ -2,8 +2,8 @@
 //  Extension+SCNVector3.swift
 //  Snake3D
 //
-//  Created by Nemo on 2020/1/22.
-//  Copyright © 2020 Nemo. All rights reserved.
+//  Created by Yi Cao on 2020/1/22.
+//  Copyright © 2020 Yi Cao. All rights reserved.
 //
 
 import SceneKit

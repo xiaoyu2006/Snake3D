@@ -2,8 +2,8 @@
 //  MainViewController.swift
 //  Snake3D
 //
-//  Created by Nemo on 2020/1/20.
-//  Copyright © 2020 Nemo. All rights reserved.
+//  Created by Yi Cao on 2020/1/20.
+//  Copyright © 2020 Yi Cao. All rights reserved.
 //
 
 import UIKit
