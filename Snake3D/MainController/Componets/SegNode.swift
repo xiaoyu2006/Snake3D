@@ -39,9 +39,13 @@ class SegNode: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func placeInFrontOfOrigin(aWidth: Float) {
+    func placeAt(width aWidth: Float, position: SCNVector3) {
+        // Fine tune
         self.position.x -= aWidth / 2
-        self.position.y = -self.position.y
-        self.position.z = -self.position.z - 0.3
+        self.position.y += 0.02
+        self.position.z = -self.position.z
+        
+        // Place @ plane
+        self.position = self.position+position
     }
 }

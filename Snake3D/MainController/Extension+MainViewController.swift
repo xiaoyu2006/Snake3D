@@ -30,6 +30,52 @@ extension MainViewController: ARSessionDelegate {
     }
 }
 
+// MARK: - ARSCNViewDelegate
+extension MainViewController: ARSCNViewDelegate {
+    func visualizePlane(node: SCNNode, anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        
+        let width = CGFloat(planeAnchor.extent.x)
+        let height = CGFloat(planeAnchor.extent.z)
+        let plane = SCNPlane(width: width, height: height)
+        
+        plane.materials.first?.diffuse.contents = UIColor.yellow.withAlphaComponent(0.5)
+        
+        let planeNode = SCNNode(geometry: plane)
+        
+        let x = CGFloat(planeAnchor.center.x)
+        let y = CGFloat(planeAnchor.center.y)
+        let z = CGFloat(planeAnchor.center.z)
+        planeNode.position = SCNVector3(x,y,z)
+        planeNode.eulerAngles.x = -.pi / 2
+        
+        node.addChildNode(planeNode)
+    }
+    
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        self.startBtnCanBeTouched = true
+        DispatchQueue.main.async {
+            self.startBtn.setTitle("Face 2 a plane & Tap to start!", for: .normal)
+        }
+        self.visualizePlane(node: node, anchor: anchor)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as?  ARPlaneAnchor, let planeNode = node.childNodes.first, let plane = planeNode.geometry as? SCNPlane else { return }
+
+        let width = CGFloat(planeAnchor.extent.x)
+        let height = CGFloat(planeAnchor.extent.z)
+        plane.width = width
+        plane.height = height
+
+        let x = CGFloat(planeAnchor.center.x)
+        let y = CGFloat(planeAnchor.center.y)
+        let z = CGFloat(planeAnchor.center.z)
+        planeNode.position = SCNVector3(x, y, z)
+    }
+}
+
 // MARK: - Interactive
 
 extension MainViewController {
@@ -86,11 +132,11 @@ extension MainViewController {
     }
     
     @objc func UP() {
-        snake.setHeading(heading: .down)
+        snake.setHeading(heading: .up)
     }
     
     @objc func DOWN() {
-        snake.setHeading(heading: .up)
+        snake.setHeading(heading: .down)
     }
     
     @objc func LEFT() {
@@ -124,7 +170,7 @@ extension MainViewController {
                 for z in 0..<self.stagez {
                     let gridNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.black, segName: "gridCube")
                     gridNode.geometry?.firstMaterial?.fillMode = .lines
-                    gridNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
+                    gridNode.placeAt(width: self.estAWidth, position: self.planePosition)
                     self.sceneView.scene.rootNode.addChildNode(gridNode)
                 }
             }
@@ -140,12 +186,12 @@ extension MainViewController {
         let segments = self.snake.getSnake()
         for seg in segments {
             let segNode = SegNode(position: seg.pos, heading: seg.dir, color: UIColor.yellow, segName: nil)
-            segNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
+            segNode.placeAt(width: self.estAWidth, position: self.planePosition)
             self.sceneView.scene.rootNode.addChildNode(segNode)
         }
         let apple = self.snake.getApple()
         let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
-        appleNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
+        appleNode.placeAt(width: self.estAWidth, position: self.planePosition)
         self.sceneView.scene.rootNode.addChildNode(appleNode)
     }
     
@@ -154,7 +200,7 @@ extension MainViewController {
         if let updated = updateInfo {
             let appended = updated.append
             let newSnakeNode = SegNode(position: appended.pos, heading: appended.dir, color: UIColor.yellow, segName: nil)
-            newSnakeNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
+            newSnakeNode.placeAt(width: self.estAWidth, position: self.planePosition)
             self.sceneView.scene.rootNode.addChildNode(newSnakeNode)
             if let deleted = updated.delete {
                 self.sceneView.scene.rootNode.childNode(withName: "SnakeSeg" + deleted.pos.toString(), recursively: true)!.removeFromParentNode()
@@ -163,7 +209,7 @@ extension MainViewController {
                 self.sceneView.scene.rootNode.childNode(withName: "Apple", recursively: true)!.removeFromParentNode()
                 let apple = self.snake.getApple()
                 let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
-                appleNode.placeInFrontOfOrigin(aWidth: self.estAWidth)
+                appleNode.placeAt(width: self.estAWidth, position: self.planePosition)
                 self.sceneView.scene.rootNode.addChildNode(appleNode)
                 DispatchQueue.main.async {
                     self.scoreLabel.text = "Scores: \(self.snake.getScore())"
