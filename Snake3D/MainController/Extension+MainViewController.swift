@@ -170,11 +170,12 @@ extension MainViewController {
                 for z in 0..<self.stagez {
                     let gridNode = SegNode(position: Vector3DInt(x: x, y: y, z: z), heading: nil, color: UIColor.black, segName: "gridCube")
                     gridNode.geometry?.firstMaterial?.fillMode = .lines
-                    gridNode.placeAt(width: self.estAWidth, position: self.planePosition)
+                    gridNode.placeAt(width: self.aWidth, position: self.planePosition)
                     self.sceneView.scene.rootNode.addChildNode(gridNode)
                 }
             }
         }
+        self.setupTips()
         
         DispatchQueue.main.async {
             self.view.addSubview(self.scoreLabel)
@@ -186,13 +187,33 @@ extension MainViewController {
         let segments = self.snake.getSnake()
         for seg in segments {
             let segNode = SegNode(position: seg.pos, heading: seg.dir, color: UIColor.yellow, segName: nil)
-            segNode.placeAt(width: self.estAWidth, position: self.planePosition)
+            segNode.placeAt(width: self.aWidth, position: self.planePosition)
             self.sceneView.scene.rootNode.addChildNode(segNode)
         }
         let apple = self.snake.getApple()
         let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
-        appleNode.placeAt(width: self.estAWidth, position: self.planePosition)
+        appleNode.placeAt(width: self.aWidth, position: self.planePosition)
         self.sceneView.scene.rootNode.addChildNode(appleNode)
+    }
+    
+    func setupTips() {
+        func setupText(at pos: SCNVector3, text: String, color: UIColor = UIColor.white, font: UIFont = UIFont.systemFont(ofSize: 1)) {
+            let textObj = SCNText(string: text, extrusionDepth: 0.01)
+            textObj.font = font
+            textObj.materials.first?.diffuse.contents = color
+            let textNode = SCNNode(geometry: textObj)
+            textNode.position = pos
+            textNode.name = text
+            textNode.scale = SCNVector3(0.03, 0.03, 0.03)
+            textNode.placeAt(width: aWidth, position: self.planePosition)
+            self.sceneView.scene.rootNode.addChildNode(textNode)
+        }
+        setupText(at: SCNVector3(aXDiv2, -0.1, aZDiv2), text: "Down")
+        setupText(at: SCNVector3(aXDiv2, aY, aZDiv2), text: "Up")
+        setupText(at: SCNVector3(aXDiv2, aYDiv2,  -0.1), text: "Backward")
+        setupText(at: SCNVector3(aXDiv2, aYDiv2, aZ), text: "Forward")
+        setupText(at: SCNVector3(-0.1, aYDiv2, aZDiv2), text: "Left")
+        setupText(at: SCNVector3(aX, aYDiv2, aZDiv2), text: "Right")
     }
     
     func updateSnake() {
@@ -200,7 +221,7 @@ extension MainViewController {
         if let updated = updateInfo {
             let appended = updated.append
             let newSnakeNode = SegNode(position: appended.pos, heading: appended.dir, color: UIColor.yellow, segName: nil)
-            newSnakeNode.placeAt(width: self.estAWidth, position: self.planePosition)
+            newSnakeNode.placeAt(width: self.aWidth, position: self.planePosition)
             self.sceneView.scene.rootNode.addChildNode(newSnakeNode)
             if let deleted = updated.delete {
                 self.sceneView.scene.rootNode.childNode(withName: "SnakeSeg" + deleted.pos.toString(), recursively: true)!.removeFromParentNode()
@@ -209,7 +230,7 @@ extension MainViewController {
                 self.sceneView.scene.rootNode.childNode(withName: "Apple", recursively: true)!.removeFromParentNode()
                 let apple = self.snake.getApple()
                 let appleNode = SegNode(position: apple, heading: nil, color: UIColor.red, segName: "Apple")
-                appleNode.placeAt(width: self.estAWidth, position: self.planePosition)
+                appleNode.placeAt(width: self.aWidth, position: self.planePosition)
                 self.sceneView.scene.rootNode.addChildNode(appleNode)
                 DispatchQueue.main.async {
                     self.scoreLabel.text = "Scores: \(self.snake.getScore())"

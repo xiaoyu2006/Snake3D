@@ -17,6 +17,17 @@ import UIKit
 import SceneKit
 import ARKit
 
+extension SCNNode {
+    func placeAt(width aWidth: Float, position: SCNVector3) {
+        // Fine tune
+        self.position.x -= aWidth / 2
+        self.position.y += 0.01
+        self.position.z = -self.position.z
+        
+        self.position = self.position + position
+    }
+}
+
 
 class SegNode: SCNNode {
     init(position: Vector3DInt, heading: Direction3D?, color: UIColor, segName: String?) {
@@ -37,16 +48,5 @@ class SegNode: SCNNode {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func placeAt(width aWidth: Float, position: SCNVector3) {
-        // Fine tune
-        self.position.x -= aWidth / 2
-        self.position.y += 0.01
-        self.position.z = -self.position.z
-        
-        // Place @ plane
-        self.position = self.position+position
-        print("\(self.name!) : \(self.position)")
     }
 }

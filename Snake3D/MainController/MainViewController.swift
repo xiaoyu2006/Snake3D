@@ -26,7 +26,17 @@ class MainViewController: UIViewController {
     let stagey = GameConfig.gameY
     let stagez = GameConfig.gameZ
     
-    let estAWidth = Float(GameConfig.gameX) * GameConfig.segXSize
+    let aWidth = Float(GameConfig.gameX) * GameConfig.segXSize
+    let aHeight = Float(GameConfig.gameY) * GameConfig.segYSize
+    let aLength = Float(GameConfig.gameZ) * GameConfig.segZSize
+    
+    let aX = Float(GameConfig.gameX) * GameConfig.segXSize
+    let aY = Float(GameConfig.gameY) * GameConfig.segYSize
+    let aZ = Float(GameConfig.gameZ) * GameConfig.segZSize
+    
+    let aXDiv2 = Float(GameConfig.gameX) * GameConfig.segXSize / 2
+    let aYDiv2 = Float(GameConfig.gameY) * GameConfig.segYSize / 2
+    let aZDiv2 = Float(GameConfig.gameZ) * GameConfig.segZSize / 2
     
     let snake = Snake(stagex: GameConfig.gameX, stagey: GameConfig.gameY, stagez: GameConfig.gameZ)
     
