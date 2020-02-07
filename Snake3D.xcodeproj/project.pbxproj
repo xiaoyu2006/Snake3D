@@ -12,7 +12,6 @@
 		BA59DE2D23D53193000E56EF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA59DE2C23D53193000E56EF /* MainViewController.swift */; };
 		BA59DE3023D53193000E56EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA59DE2E23D53193000E56EF /* Main.storyboard */; };
 		BA59DE3523D53194000E56EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA59DE3323D53194000E56EF /* LaunchScreen.storyboard */; };
-		BA7EC80A23E2DF39002FE11F /* arrow.obj in Resources */ = {isa = PBXBuildFile; fileRef = BA7EC80923E2DF39002FE11F /* arrow.obj */; };
 		BA89B28223E1CFE9008B0D95 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89B28123E1CFE9008B0D95 /* SoundPlayer.swift */; };
 		BA89B28623E1D101008B0D95 /* 1-Up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA89B28523E1D101008B0D95 /* 1-Up.mp3 */; };
 		BA89B28923E1D2DF008B0D95 /* Game Over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA89B28823E1D2DF008B0D95 /* Game Over.mp3 */; };
@@ -30,7 +29,6 @@
 		BA59DE2F23D53193000E56EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA59DE3423D53194000E56EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA59DE3623D53194000E56EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA7EC80923E2DF39002FE11F /* arrow.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arrow.obj; sourceTree = "<group>"; };
 		BA89B28123E1CFE9008B0D95 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		BA89B28523E1D101008B0D95 /* 1-Up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "1-Up.mp3"; sourceTree = "<group>"; };
 		BA89B28823E1D2DF008B0D95 /* Game Over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Game Over.mp3"; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 		BA59DE2723D53193000E56EF /* Snake3D */ = {
 			isa = PBXGroup;
 			children = (
-				BA7EC80923E2DF39002FE11F /* arrow.obj */,
 				BA59DE2823D53193000E56EF /* AppDelegate.swift */,
 				BAAD4CD423D88759001CD449 /* GameConfig.swift */,
 				BA1A331C23D5A54700C731F7 /* Snake3D.swift */,
@@ -172,7 +169,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA7EC80A23E2DF39002FE11F /* arrow.obj in Resources */,
 				BA89B28923E1D2DF008B0D95 /* Game Over.mp3 in Resources */,
 				BA89B28623E1D101008B0D95 /* 1-Up.mp3 in Resources */,
 				BA59DE3523D53194000E56EF /* LaunchScreen.storyboard in Resources */,
