@@ -47,5 +47,6 @@ class SegNode: SCNNode {
         
         // Place @ plane
         self.position = self.position+position
+        print("\(self.name!) : \(self.position)")
     }
 }

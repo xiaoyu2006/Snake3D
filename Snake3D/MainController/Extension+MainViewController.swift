@@ -121,13 +121,13 @@ extension MainViewController {
     
     func getFrame4ControlBtn1(_ negX: CGFloat, _ negY: CGFloat) -> CGRect {
         let superFrame = self.view.frame
-        let result = CGRect(x: superFrame.maxX - negX, y: superFrame.maxY - negY, width: 100.0, height: 50.0)
+        let result = CGRect(x: superFrame.maxX - negX, y: superFrame.maxY - negY, width: 100.0, height: 75.0)
         return result
     }
     
     func getFrame4ControlBtn2(_ x: CGFloat, _ negY: CGFloat) -> CGRect {
         let superFrame = self.view.frame
-        let result = CGRect(x: x, y: superFrame.maxY - negY, width: 100.0, height: 50.0)
+        let result = CGRect(x: x, y: superFrame.maxY - negY, width: 100.0, height: 75.0)
         return result
     }
     
